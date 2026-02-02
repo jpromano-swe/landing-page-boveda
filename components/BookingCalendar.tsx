@@ -60,7 +60,7 @@ export default function BookingCalendar() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`/api/calendar/availability?days=10`, {
+        const response = await fetch(`/api/calendar/availability?days=15`, {
           signal: controller.signal,
           cache: "no-store",
         });
@@ -104,6 +104,23 @@ export default function BookingCalendar() {
     return Array.from(slotsByDate.keys()).sort();
   }, [slotsByDate]);
 
+  const getWeekdayIndex = (dateKey: string) => {
+    const date = new Date(`${dateKey}T00:00:00${tzOffset}`);
+    return date.getDay(); // 0=Sun
+  };
+
+  const addDays = (dateKey: string, amount: number) => {
+    const date = new Date(`${dateKey}T00:00:00${tzOffset}`);
+    date.setDate(date.getDate() + amount);
+    return date.toISOString().slice(0, 10);
+  };
+
+  const weekStarts = useMemo(() => {
+    const base = availability?.week?.start?.slice(0, 10) || availableDates[0];
+    if (!base) return [];
+    return [base, addDays(base, 7)];
+  }, [availability, availableDates, tzOffset]);
+
   const monthLabel = useMemo(() => {
     const base = availability?.week?.start?.slice(0, 10) || availableDates[0];
     if (!base) return "";
@@ -124,10 +141,7 @@ export default function BookingCalendar() {
     return slotsByDate.get(selectedDate) ?? [];
   }, [selectedDate, slotsByDate]);
 
-  const getWeekdayColumn = (dateKey: string) => {
-    const date = new Date(`${dateKey}T00:00:00${tzOffset}`);
-    return date.getDay() + 1;
-  };
+  const getWeekdayColumn = (dateKey: string) => getWeekdayIndex(dateKey) + 1;
 
   const goToStep = (next: typeof step, dir: number) => {
     setDirection(dir);
@@ -208,7 +222,7 @@ export default function BookingCalendar() {
         </button>
       </div>
 
-      <div className="relative mt-6 min-h-[360px] overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 sm:min-h-[320px]">
+      <div className="relative mt-6 min-h-[337px] overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 sm:min-h-[337px]">
         {loading ? (
           <div className="flex h-full items-center justify-center text-sm text-white/60">
             Cargando disponibilidad...
@@ -234,33 +248,49 @@ export default function BookingCalendar() {
                       <span key={label}>{label}</span>
                     ))}
                   </div>
-                  <div className="mt-3 grid grid-cols-7 gap-1.5">
-                    {availableDates.map((dateKey) => {
-                      const dayNumber = Number(dateKey.slice(8));
-                      const isSelected = selectedDate === dateKey;
-                      return (
-                        <button
-                          key={dateKey}
-                          style={{ gridColumnStart: getWeekdayColumn(dateKey) }}
-                          className={cn(
-                            "flex h-9 items-center justify-center rounded-lg text-sm transition sm:h-10 sm:rounded-xl",
-                            "border border-white/20 text-white hover:border-[color:var(--accent)]",
-                            isSelected &&
-                              "bg-[color:var(--accent)] text-[#0b0b0b] border-transparent"
-                          )}
-                          type="button"
-                          onClick={() => {
-                            setSelectedDate(dateKey);
-                            setSelectedSlot(null);
-                            setBookingStatus("idle");
-                            setBookingMessage(null);
-                          }}
-                        >
-                          {dayNumber}
-                        </button>
-                      );
-                    })}
-                  </div>
+                  {weekStarts.map((weekStart, index) => {
+                    const weekEnd = addDays(weekStart, 7);
+                    const weekDates = availableDates.filter((dateKey) => {
+                      if (dateKey < weekStart || dateKey >= weekEnd) return false;
+                      return true;
+                    });
+
+                    return (
+                      <div
+                        key={weekStart}
+                        className={cn(
+                          "grid min-h-[40px] grid-cols-7 gap-1.5",
+                          index === 0 ? "mt-3" : "mt-2"
+                        )}
+                      >
+                        {weekDates.map((dateKey) => {
+                          const dayNumber = Number(dateKey.slice(8));
+                          const isSelected = selectedDate === dateKey;
+                          return (
+                            <button
+                              key={dateKey}
+                              style={{ gridColumnStart: getWeekdayColumn(dateKey) }}
+                              className={cn(
+                                "flex h-9 items-center justify-center rounded-lg text-sm transition sm:h-10 sm:rounded-xl",
+                                "border border-white/20 text-white hover:border-[color:var(--accent)]",
+                                isSelected &&
+                                  "bg-[color:var(--accent)] text-[#0b0b0b] border-transparent"
+                              )}
+                              type="button"
+                              onClick={() => {
+                                setSelectedDate(dateKey);
+                                setSelectedSlot(null);
+                                setBookingStatus("idle");
+                                setBookingMessage(null);
+                              }}
+                            >
+                              {dayNumber}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
                   {!availableDates.length ? (
                     <p className="mt-6 text-center text-sm text-white/50">
                       No hay horarios disponibles por ahora.
