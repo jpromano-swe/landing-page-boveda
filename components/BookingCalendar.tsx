@@ -1,3 +1,5 @@
+//@note Falta integrar feature de conexion a Google Calendar para que consulte y agregue directamente. Tanto endpoints para back como conexion con API de GC.
+
 "use client";
 
 import { ChevronLeft, ChevronRight, Clock, CalendarCheck } from "lucide-react";
