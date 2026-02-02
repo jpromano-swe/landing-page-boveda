@@ -13,7 +13,7 @@ const display = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "BÓVEDA | Ahorrá en Bitcoin automático",
+  title: "BOVEDA | Automatizá tus ahorros en Bitcoin",
   description:
     "Ahorro automático en BTC: depositás ARS en Binance y BÓVEDA compra y envía a tu bóveda.",
 };

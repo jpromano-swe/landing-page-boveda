@@ -22,7 +22,7 @@ const faqs = [
     a: "Para una automatizacion completa, si, es necesario, de todas formas, BOVEDA tambien funciona con transferencias manuales.",
   },
   {
-    q: "¿Puedo retirar mi BTCn a pesos?",
+    q: "¿Puedo retirar mi BTC en a pesos directamente?",
     a: "Sí, los activos son tuyos y estan disponibles en todo momento. Al gestionar un retiro, tus BTC vuelven a tu cuenta del exchange, se venden por pesos automaticamente y los tenes listos para ser retirados.",
   },
   {
@@ -311,9 +311,12 @@ export default function Home() {
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
                 </p>
                 <h2 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">
-                  Agendá una reunión con el equipo
-                  <span className="ml-2 inline-flex rounded-full bg-[color:var(--accent)]/20 px-2 py-1 text-[color:var(--accent)]">
-                    SIN CARGO.
+                  <span className="block">Agendá una reunión</span>
+                  <span className="mt-2 block">
+                    con el equipo{" "}
+                    <span className="inline-flex rounded-full bg-[color:var(--accent)]/20 px-2 py-1 text-[color:var(--accent)]">
+                      SIN CARGO.
+                    </span>
                   </span>
                 </h2>
                 <p className="mt-4 text-slate-600 dark:text-slate-200">
