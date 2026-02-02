@@ -18,30 +18,30 @@ const faqs = [
     a: "No es necesario. El flujo es guiado y con lenguaje simple, paso a paso.",
   },
   {
-    q: "¿Tengo que configurar transferencias?",
-    a: "Para una automatizacion completa es necesario, de todas formas, tambien funciona con transferencias manuales.",
+    q: "¿Tengo que configurar las transferencias desde mi cuenta bancaria?",
+    a: "Para una automatizacion completa, si, es necesario, de todas formas, BOVEDA tambien funciona con transferencias manuales.",
   },
   {
-    q: "¿Puedo retirar a pesos?",
-    a: "Sí: el BTC vuelve a tu Binance, se vende y retirás ARS.",
+    q: "¿Puedo retirar mi BTCn a pesos?",
+    a: "Sí, los activos son tuyos y estan disponibles en todo momento. Al gestionar un retiro, tus BTC vuelven a tu cuenta del exchange, se venden por pesos automaticamente y los tenes listos para ser retirados.",
   },
   {
-    q: "¿Qué pasa si quiero mi propia wallet?",
-    a: "Cambiamos la dirección de destino cuando quieras.",
+    q: "¿Qué pasa si quiero usar mi propia wallet?",
+    a: "Si ya posees una billetera fria, cambiamos la dirección de destino cuando quieras, y ajustamos la suscripcion a BOVEDA base.",
   },
   {
     q: "¿Cobran comisión por operación?",
-    a: "No. Se cobra una suscripción mensual fija.",
+    a: "No. Nuestro servicio no viene con cargos adicionales fuera de una suscripción mensual fija.",
   },
   {
     q: "¿Es seguro?",
-    a: "Aplicamos controles operativos y buenas prácticas, pero ningún sistema es invulnerable.",
+    a: "Aplicamos controles operativos y buenas prácticas para mantener tus activos libres de riesgo.",
   },
 ];
 
 export default function Home() {
   return (
-    <main className="bg-transparent text-slate-900">
+    <main className="bg-transparent text-slate-900" id="top">
       <section className="relative min-h-screen">
         <div className="absolute inset-0">
           <BackgroundPaths title="" />
@@ -66,14 +66,14 @@ export default function Home() {
                     automático y sin fricción.
                   </h1>
                   <p className="text-lg text-slate-700 sm:text-xl dark:text-slate-200">
-                    Depositás pesos en Binance. BÓVEDA los convierte a BTC y los envía a tu
-                    bóveda.
+                    Depositás pesos en exchange. BOVEDA los convierte a BTC y los envía a tu
+                    billetera designada.
                   </p>
                   <ul className="space-y-3 text-slate-700 dark:text-slate-200">
                     {[
-                      "Compra automática cuando entra tu depósito.",
-                      "Seguimiento desde tu dashboard.",
-                      "Custodia opcional (temporal) para principiantes.",
+                      "Compras automáticas cuando entra tu depósito en pesos.",
+                      "Seguimiento de tus BTC desde tu dashboard.",
+                      "Custodia temporal y asistencia para principiantes.",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-slate-900 dark:bg-white" />
@@ -102,7 +102,7 @@ export default function Home() {
                     </a>
                   </div>
                   <p className="text-xs text-slate-600 dark:text-slate-300">
-                    No es asesoramiento financiero. Bitcoin es un activo volátil.
+                    BOVEDA no es un proveedor de asesoramiento financiero. Bitcoin es un activo volátil.
                   </p>
               </div>
             </div>
@@ -117,18 +117,17 @@ export default function Home() {
               <h2 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
                 Ahorro con una reserva digital escasa
               </h2>
-              <div className="mt-6 space-y-4 text-slate-700">
+              <div className="mt-6 space-y-4 text-lg text-slate-700">
                 <p>
-                  Bitcoin es escaso: existen solo 21 millones y nunca habrá más.
+                  Bitcoin es escaso, existen solo 21 millones y nunca habrá más.
                 </p>
                 <p>
-                  Cuando algo es escaso y la demanda crece, puede actuar como reserva de
+                  Cuando un bien es escaso y la demanda crece, puede actuar como reserva de
                   valor a largo plazo.
                 </p>
                 <p>
                   Históricamente, quienes compraron y mantuvieron BTC a largo plazo terminaron
-                  viendo recuperaciones incluso después de máximos históricos (ATH), con el
-                  paso del tiempo.
+                  con margenes de ganancia, incluso luego de compras en maximos historicos.
                 </p>
               </div>
             </div>
@@ -151,9 +150,9 @@ export default function Home() {
                 Ahorrar en Bitcoin debería ser simple.
               </h2>
               <p className="mt-4 text-lg text-slate-700">
-                Un sistema diseñado para convertir el ahorro en un hábito de manera sencilla,
+                BOVEDA brinda un sistema diseñado para convertir el ahorro y la inversión
                 <br />
-                sin decisiones constantes ni graficas abrumadoras.
+                en un hábito de manera sencilla, sin decisiones constantes ni graficas abrumadoras.
               </p>
             </div>
             <div className="max-w-sm lg:justify-self-end">
@@ -199,12 +198,12 @@ export default function Home() {
                   text: "Vos configurás transferencias recurrentes o manuales en pesos a tu cuenta en el exchange.",
                 },
                 {
-                  title: "BÓVEDA compra BTC automáticamente",
+                  title: "BOVEDA compra BTC automáticamente",
                   text: "Detectamos depósitos ARS y ejecutamos la compra ARS→BTC en tu cuenta.",
                 },
                 {
-                  title: "Envío a Bóveda",
-                  text: "El BTC se envía a una billetera fria y segura. Podés ver tus movimientos y monitorear tus activos desde el panel del usuario.",
+                  title: "Envío desde BOVEDA a billtera",
+                  text: "El BTC se envía automaticamente a una billetera fria y segura. Podés ver tus movimientos y monitorear tus activos desde el panel del usuario.",
                 },
               ].map((step, index) => (
                 <div
@@ -333,9 +332,22 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-black/10 px-4 py-10 text-center text-xs text-slate-500 dark:border-white/10">
-        Este sitio no constituye asesoramiento financiero. Bitcoin es volátil y puede subir
-        o bajar. El rendimiento pasado no garantiza resultados futuros.
+      <footer className="border-t border-black/10 px-4 py-10 text-xs text-slate-500 dark:border-white/10">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
+          <div className="flex-1 text-center">
+            <p className="mx-auto max-w-4xl">
+              Este sitio no constituye asesoramiento financiero. Bitcoin es volátil y puede subir
+              o bajar. El rendimiento pasado no garantiza resultados futuros.
+            </p>
+          </div>
+          <a
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--accent)] text-[#0b0b0b] shadow-lg shadow-[color:var(--accent)]/20 transition hover:-translate-y-0.5 hover:bg-[color:var(--accent-light)]"
+            href="#top"
+            aria-label="Volver arriba"
+          >
+            ↑
+          </a>
+        </div>
       </footer>
     </main>
   );

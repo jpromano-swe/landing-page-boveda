@@ -81,13 +81,13 @@ export default function CardFlip({
             "transition-all duration-700",
             "group-hover:shadow-xl",
             highlight
-              ? "bg-gradient-to-br from-[#3a1f07] via-[#140c06] to-[#0b0b0b] border-[color:var(--accent)]/70 shadow-[0_0_60px_rgba(245,166,35,0.32)]"
+              ? "bg-gradient-to-br from-[#0b0b0b] via-[#2a1708] to-[#c46a1a] border-[color:var(--accent)]/70 shadow-[0_0_60px_rgba(245,166,35,0.32)]"
               : "bg-zinc-950",
             isFlipped ? "opacity-0" : "opacity-100"
           )}
         >
-          <div className="absolute right-0 bottom-0 left-0 p-5">
-            <div className="space-y-2">
+          <div className="absolute inset-0 flex items-center justify-start p-6">
+            <div className="w-full max-w-[72%] space-y-3 text-left">
               {badge ? (
                 <span className="inline-flex rounded-full border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-[color:var(--accent-light)]">
                   {badge}
@@ -95,20 +95,20 @@ export default function CardFlip({
               ) : null}
               <h3
                 className={cn(
-                  "font-display text-xl font-semibold leading-snug tracking-tight md:text-2xl",
+                  "font-display text-3xl font-semibold leading-snug tracking-tight md:text-4xl",
                   highlight ? "text-[color:var(--accent)]" : "text-white"
                 )}
               >
                 {title}
               </h3>
-              {subtitle ? <p className="text-xs text-white/60">{subtitle}</p> : null}
+              {subtitle ? <p className="text-base text-white/60">{subtitle}</p> : null}
               <div className="flex items-end gap-2">
-                <span className="text-2xl font-semibold text-white md:text-3xl">
+                <span className="text-4xl font-semibold text-white md:text-5xl">
                   {priceArs}
                 </span>
-                <span className="text-xs text-white/60">/ mes</span>
+                <span className="text-base text-white/60">/ mes</span>
               </div>
-              {priceUsd ? <p className="text-xs text-white/60">{priceUsd}</p> : null}
+              {priceUsd ? <p className="text-base text-white/60">{priceUsd}</p> : null}
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function CardFlip({
             "group-hover:shadow-xl",
             "overflow-hidden",
             highlight
-              ? "bg-gradient-to-br from-[#3a1f07] via-[#140c06] to-[#0b0b0b] border-[color:var(--accent)]/70 shadow-[0_0_60px_rgba(245,166,35,0.32)]"
+              ? "bg-gradient-to-br from-[#0b0b0b] via-[#2a1708] to-[#c46a1a] border-[color:var(--accent)]/70 shadow-[0_0_60px_rgba(245,166,35,0.32)]"
               : "bg-zinc-950",
             isFlipped ? "opacity-100" : "opacity-0"
           )}
@@ -143,8 +143,8 @@ export default function CardFlip({
 
             <div
               className={cn(
-                "mt-3 grid gap-2",
-                extraTitle && extraFeatures.length ? "md:grid-cols-2" : ""
+                "mt-3 grid gap-3",
+                extraTitle && extraFeatures.length ? "md:grid-cols-[1fr_0.9fr]" : ""
               )}
             >
               <div className="space-y-2">
