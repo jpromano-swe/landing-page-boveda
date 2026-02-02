@@ -2,6 +2,7 @@ import BackgroundPaths from "@/components/BackgroundPaths";
 import CardFlip from "@/components/CardFlip";
 import BookingCalendar from "@/components/BookingCalendar";
 import FaqAccordion from "@/components/FaqAccordion";
+import SmoothTab from "@/components/SmoothTab";
 
 const benefits = [
   "Disciplina: convertís ahorro en hábito.",
@@ -109,9 +110,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 pb-20 pt-24" id="beneficios">
+      <section className="px-4 pb-20 pt-24" id="por-que">
         <div className="mx-auto w-full max-w-6xl">
-          <div id="por-que" className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
             <div>
               <h2 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
                 Ahorro con una reserva digital escasa
@@ -139,99 +140,95 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="mt-16">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-                  BENEFICIOS
-                </p>
-                <h2 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
-                  Ahorrar en Bitcoin debería ser simple.
-                </h2>
-              </div>
-            </div>
-
-            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  title: "Automático",
-                  text: "Comprás BTC sin pensarlo. El ahorro sucede solo.",
-                },
-                {
-                  title: "Sostenido",
-                  text: "Menos impulsos, más largo plazo. La constancia hace la diferencia.",
-                },
-                {
-                  title: "Transparente",
-                  text: "Ves cada paso: depósitos, compras y envíos.",
-                },
-              ].map((benefit) => (
-                <div
-                  key={benefit.title}
-                  className="rounded-2xl border border-black/10 bg-[#f2ede4] p-6 text-sm text-slate-700 shadow-md dark:border-white/10 dark:bg-neutral-950 dark:text-slate-200"
-                >
-                  <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
-                    {benefit.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-200">
-                    {benefit.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-6 max-w-3xl text-sm text-slate-600">
-              Menos decisiones, más consistencia. En BÓVEDA te acompañamos a construir el hábito de ahorrar en BTC.
-            </p>
-          </div>
         </div>
       </section>
 
       <section className="px-4 pb-20" id="como-funciona">
         <div className="mx-auto w-full max-w-6xl">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div className="grid gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-start">
             <div>
-              <h2 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
-                Tres pasos, cero fricción
+              <h2 className="font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
+                Ahorrar en Bitcoin debería ser simple.
               </h2>
+              <p className="mt-4 text-lg text-slate-700">
+                Un sistema diseñado para convertir el ahorro en un hábito de manera sencilla,
+                <br />
+                sin decisiones constantes ni graficas abrumadoras.
+              </p>
+            </div>
+            <div className="max-w-sm lg:justify-self-end">
+              <SmoothTab
+                items={[
+                  {
+                    id: "menos",
+                    title: "Automatico",
+                    description: "Compras programadas de BTC desde tu cuenta bancaria.",
+                    color: "bg-[#c46a1a]",
+                    accent: "bg-[#c46a1a]",
+                  },
+                  {
+                    id: "consistencia",
+                    title: "Sostenido",
+                    description: "A la hora de ahorrar, la constancia importa más que el timing.",
+                    color: "bg-[color:var(--accent)]",
+                    accent: "bg-[color:var(--accent)]",
+                  },
+                  {
+                    id: "control",
+                    title: "Transparente",
+                    description: "Ves depósitos, compras, y tenes control total sobre los retiros.",
+                    color: "bg-[#fad57d]",
+                    accent: "bg-[#fad57d]",
+                  },
+                ]}
+              />
             </div>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Depositás ARS en tu\nexchange de confianza",
-                text: "Vos configurás transferencias recurrentes o manuales en pesos a tu cuenta en el exchange.",
-              },
-              {
-                title: "BÓVEDA compra BTC automáticamente",
-                text: "Detectamos depósitos ARS y ejecutamos la compra ARS→BTC en tu cuenta.",
-              },
-              {
-                title: "Envío a Bóveda",
-                text: "El BTC se envía a una billetera fria y segura. Podés ver tus movimientos y monitorear tus activos desde el panel del usuario.",
-              },
-            ].map((step, index) => (
-              <div
-                key={step.title}
-                className="relative overflow-hidden rounded-2xl border border-black/10 bg-[#f2ede4] p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-black/20 dark:border-white/10 dark:bg-neutral-950 dark:hover:border-white/30"
-              >
-                <div className="absolute right-4 top-4 text-3xl font-display text-[color:var(--accent-light)] opacity-70">
-                  0{index + 1}
-                </div>
-                <h3 className="whitespace-pre-line font-display text-xl font-semibold text-slate-900 dark:text-white">
-                  {step.title}
-                </h3>
-                <p className="mt-4 text-sm text-slate-600 dark:text-slate-200">{step.text}</p>
+          <div className="mt-16 border-t border-black/10 pt-16 dark:border-white/10">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <h2 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
+                  Tres pasos, cero fricción
+                </h2>
               </div>
-            ))}
+            </div>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  title: "Depositás ARS en tu\nexchange de confianza",
+                  text: "Vos configurás transferencias recurrentes o manuales en pesos a tu cuenta en el exchange.",
+                },
+                {
+                  title: "BÓVEDA compra BTC automáticamente",
+                  text: "Detectamos depósitos ARS y ejecutamos la compra ARS→BTC en tu cuenta.",
+                },
+                {
+                  title: "Envío a Bóveda",
+                  text: "El BTC se envía a una billetera fria y segura. Podés ver tus movimientos y monitorear tus activos desde el panel del usuario.",
+                },
+              ].map((step, index) => (
+                <div
+                  key={step.title}
+                  className="relative overflow-hidden rounded-2xl border border-black/10 bg-[#f2ede4] p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-black/20 dark:border-white/10 dark:bg-neutral-950 dark:hover:border-white/30"
+                >
+                  <div className="absolute right-4 top-4 text-3xl font-display text-[color:var(--accent-light)] opacity-70">
+                    0{index + 1}
+                  </div>
+                  <h3 className="whitespace-pre-line font-display text-xl font-semibold text-slate-900 dark:text-white">
+                    {step.title}
+                  </h3>
+                  <p className="mt-4 text-sm text-slate-600 dark:text-slate-200">{step.text}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 max-w-3xl text-sm text-slate-600">
+              Vos tenes el control de los activos, nosotros automatizamos el proceso.
+            </p>
           </div>
-          <p className="mt-6 max-w-3xl text-sm text-slate-600">
-          Vos tenes el control de los activos, nosotros automatizamos el proceso.
-          </p>
         </div>
       </section>
 
-      <section className="px-4 pb-24" id="pricing">
+      <section className="px-4 pb-24 pt-16 border-t border-black/10 dark:border-white/10" id="pricing">
         <div className="mx-auto w-full max-w-6xl">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
