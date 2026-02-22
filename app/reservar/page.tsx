@@ -129,6 +129,11 @@ export default function ReservarPage() {
         </motion.header>
 
         <div className="px-4 pb-8 pt-24 sm:px-6 sm:pb-10 sm:pt-28 lg:px-8 lg:pt-28">
+          <div className="mx-auto mb-6 w-full max-w-6xl text-center lg:mb-8">
+            <h1 className="font-display text-2xl font-semibold text-white sm:text-3xl">
+              Elegi la fecha y agenda tu reunion
+            </h1>
+          </div>
           <BookingCalendar />
         </div>
       </div>
