@@ -13,10 +13,18 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 74px;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 92px;
+  }
 }
 
 body {
   min-height: 100vh;
+  overflow-x: hidden;
   background: radial-gradient(circle at top, #f3ede3 0%, var(--paper) 55%, #e8dfd1 100%);
   color: var(--ink);
 }
@@ -27,4 +35,32 @@ body {
 
 .font-body {
   font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+}
+
+@keyframes hero-glow-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 0 rgba(245, 166, 35, 0);
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(245, 166, 35, 0.35), 0 0 28px rgba(245, 166, 35, 0.18);
+    filter: brightness(1.08);
+  }
+}
+
+.hero-highlight-glow {
+  animation: hero-glow-pulse 3.2s ease-in-out infinite;
+  will-change: filter, text-shadow;
+}
+
+.hero-highlight-glow-late {
+  animation-delay: 0.55s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-highlight-glow,
+  .hero-highlight-glow-late {
+    animation: none;
+  }
 }

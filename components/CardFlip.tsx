@@ -47,7 +47,7 @@ export default function CardFlip({
 
   return (
     <div
-      className="group relative h-[420px] w-full [perspective:2000px] sm:h-[380px] md:h-[330px]"
+      className="group relative h-[470px] w-full [perspective:2000px] sm:h-[460px] md:h-[430px] lg:h-[390px] xl:h-[360px]"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
       onClick={toggle}
@@ -86,8 +86,8 @@ export default function CardFlip({
             isFlipped ? "opacity-0" : "opacity-100"
           )}
         >
-          <div className="absolute inset-0 flex items-center justify-start p-6">
-            <div className="w-full max-w-[72%] space-y-3 text-left">
+          <div className="absolute inset-0 flex items-start justify-start p-5 pt-6 sm:p-6 sm:pt-7">
+            <div className="w-full max-w-[90%] space-y-3 text-left sm:max-w-[82%]">
               {badge ? (
                 <span className="inline-flex rounded-full border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-[color:var(--accent-light)]">
                   {badge}
@@ -95,20 +95,20 @@ export default function CardFlip({
               ) : null}
               <h3
                 className={cn(
-                  "font-display text-3xl font-semibold leading-snug tracking-tight md:text-4xl",
+                  "font-display text-[2rem] font-semibold leading-[1.05] tracking-tight sm:text-3xl lg:text-4xl",
                   highlight ? "text-[color:var(--accent)]" : "text-white"
                 )}
               >
                 {title}
               </h3>
-              {subtitle ? <p className="text-base text-white/60">{subtitle}</p> : null}
+              {subtitle ? <p className="text-base text-white/65 sm:text-lg">{subtitle}</p> : null}
               <div className="flex items-end gap-2">
-                <span className="text-4xl font-semibold text-white md:text-5xl">
+                <span className="text-4xl font-semibold text-white sm:text-4xl lg:text-5xl">
                   {priceArs}
                 </span>
-                <span className="text-base text-white/60">/ mes</span>
+                <span className="text-base text-white/60 sm:text-lg">/ mes</span>
               </div>
-              {priceUsd ? <p className="text-base text-white/60">{priceUsd}</p> : null}
+              {priceUsd ? <p className="text-base text-white/65 sm:text-lg">{priceUsd}</p> : null}
             </div>
           </div>
         </div>
@@ -132,13 +132,13 @@ export default function CardFlip({
         >
           <div className="flex-1">
             <div className="space-y-1.5">
-              <h3 className="font-display text-lg font-semibold text-white leading-snug tracking-tight md:text-xl">
+              <h3 className="font-display text-xl font-semibold text-white leading-snug tracking-tight md:text-2xl">
                 {title}
               </h3>
-              <p className="text-xs text-white/60">
+              <p className="text-sm text-white/65">
                 {priceArs} / mes {priceUsd ? `· ${priceUsd}` : ""}
               </p>
-              {includesNote ? <p className="text-[10px] text-white/50">{includesNote}</p> : null}
+              {includesNote ? <p className="text-xs text-white/55">{includesNote}</p> : null}
             </div>
 
             <div
@@ -147,10 +147,10 @@ export default function CardFlip({
                 extraTitle && extraFeatures.length ? "md:grid-cols-[1fr_0.9fr]" : ""
               )}
             >
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 {features.map((feature, index) => (
                   <div
-                    className="flex items-center gap-2 text-[12px] leading-snug text-white/80 transition-all duration-500"
+                    className="flex items-center gap-2 text-[13px] leading-snug text-white/85 transition-all duration-500 sm:text-[13px]"
                     key={feature}
                     style={{
                       transform: isFlipped ? "translateX(0)" : "translateX(-10px)",
@@ -166,14 +166,14 @@ export default function CardFlip({
 
               {extraTitle && extraFeatures.length ? (
                 <div className="rounded-xl border border-white/10 bg-white/5 p-2">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--accent-light)]">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--accent-light)]">
                     {extraTitle}
                   </p>
                   <div className="mt-2 space-y-1">
                     {extraFeatures.map((extra) => (
                       <div
                         key={extra}
-                        className="flex items-start gap-2 text-[11px] leading-snug text-white/80"
+                        className="flex items-start gap-2 text-[12px] leading-snug text-white/85 sm:text-[12px]"
                       >
                         <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[color:var(--accent)]" />
                         <span>{extra}</span>
@@ -190,7 +190,7 @@ export default function CardFlip({
               type="button"
               onClick={(event) => event.stopPropagation()}
               className={cn(
-                "group/start relative flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition",
+                "group/start relative flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold transition",
                 highlight
                   ? "bg-[color:var(--accent)] text-[#0b0b0b] hover:bg-[color:var(--accent-light)]"
                   : "bg-white/10 text-white hover:bg-white/15"

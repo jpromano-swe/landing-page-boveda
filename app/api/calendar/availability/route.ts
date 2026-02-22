@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
+const DEFAULT_BACKEND_URL = "https://backend-landing-boveda-production.up.railway.app";
+const rawApiUrl =
+  process.env.BACKEND_URL ?? process.env.NEXT_PUBLIC_API_URL ?? DEFAULT_BACKEND_URL;
+const apiUrlWithProtocol = /^https?:\/\//i.test(rawApiUrl)
+  ? rawApiUrl
+  : `https://${rawApiUrl}`;
+const API_URL = apiUrlWithProtocol.replace(/\/+$/, "");
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

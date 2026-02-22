@@ -12,7 +12,7 @@ out/
 .turbo/
 
 # Backend
-.backend/
+backend/
 
 # Logs
 npm-debug.log*
