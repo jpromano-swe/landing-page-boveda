@@ -4,7 +4,6 @@ import BackgroundPaths from "@/components/BackgroundPaths";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import CardFlip from "@/components/CardFlip";
-import BookingCalendar from "@/components/BookingCalendar";
 import FaqAccordion from "@/components/FaqAccordion";
 import SmoothTab from "@/components/SmoothTab";
 
@@ -123,7 +122,7 @@ export default function Home() {
                   </motion.a>
                   <motion.a
                     className="inline-flex items-center justify-center rounded-full border border-[color:var(--accent-dark)]/40 bg-[color:var(--accent)] px-5 py-2.5 text-sm font-semibold text-[#0b0b0b] shadow-lg shadow-[color:var(--accent)]/25 transition hover:-translate-y-0.5 hover:bg-[color:var(--accent-light)]"
-                    href="#cta"
+                    href="/reservar"
                     onClick={() => setMobileMenuOpen(false)}
                     initial={{ opacity: 0, y: -8, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -214,7 +213,7 @@ export default function Home() {
                     </div>
                     <a
                       className="mt-6 inline-flex items-center justify-center rounded-full border border-[color:var(--accent-dark)]/40 bg-[color:var(--accent)] px-5 py-3 text-base font-semibold text-[#0b0b0b]"
-                      href="#cta"
+                      href="/reservar"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Agenda tu reunión
@@ -330,7 +329,7 @@ export default function Home() {
               </div>
             </motion.div>
             <motion.div
-              className="aspect-[16/10] min-h-[260px] overflow-hidden rounded-2xl border border-black/10 bg-black p-3 shadow-lg sm:min-h-[320px] lg:min-h-[420px] lg:p-4 dark:border-white/10"
+              className="h-[220px] w-full overflow-hidden rounded-2xl border border-black/10 bg-black p-2 shadow-lg sm:h-[320px] sm:p-3 lg:h-[420px] lg:p-4 dark:border-white/10"
               initial={{ opacity: 0, x: 34, scale: 0.94, rotate: 0.35 }}
               whileInView={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
               viewport={inViewConfig}
@@ -338,7 +337,7 @@ export default function Home() {
             >
               <img
                 alt="Gráfico de rendimiento de Bitcoin y otros activos"
-                className="h-full w-full object-contain"
+                className="block h-full w-full object-contain object-center"
                 src="/btc_chart.png"
               />
             </motion.div>
@@ -618,9 +617,7 @@ export default function Home() {
                 viewport={inViewConfig}
                 transition={{ duration: 0.68, delay: 0.06, ease: easeOutExpo }}
               >
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-                </p>
-                <h2 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">
+                <h2 className="font-display text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">
                   <span className="block">Agendá una reunión</span>
                   <span className="mt-2 block">
                     con el equipo{" "}
@@ -647,7 +644,31 @@ export default function Home() {
                 viewport={inViewConfig}
                 transition={{ duration: 0.82, delay: 0.12, ease: easeOutExpo }}
               >
-                <BookingCalendar />
+                <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0b0b0b] p-6 text-white shadow-[0_25px_60px_rgba(0,0,0,0.35)] sm:p-8">
+                  <p className="text-base leading-relaxed text-white/85 sm:text-lg">
+                    Elegí un día y horario para conocer el flujo, resolver dudas y sumarte a la
+                    beta más rápido.
+                  </p>
+                  <div className="mt-6 space-y-3 text-sm leading-relaxed text-white/75 sm:text-base">
+                    <p>• Duración estimada: 20 minutos.</p>
+                    <p>• Sin compromiso ni asesoramiento financiero.</p>
+                    <p>• Te mostramos el sistema y el dashboard.</p>
+                    <p>
+                      • Te asesoramos en caso de que necesites abrir una cuenta en un broker o
+                      exchange.
+                    </p>
+                    <p>
+                      • Activamos tu BOVEDA acorde a tu perfil como inversor para que puedas
+                      empezar a invertir.
+                    </p>
+                  </div>
+                  <a
+                    className="mt-8 inline-flex items-center justify-center rounded-full bg-[color:var(--accent)] px-6 py-3 text-sm font-semibold text-[#0b0b0b] shadow-lg shadow-[color:var(--accent)]/20 transition hover:-translate-y-0.5 hover:bg-[color:var(--accent-light)]"
+                    href="/reservar"
+                  >
+                    Agendar reunión
+                  </a>
+                </div>
               </motion.div>
             </div>
           </motion.div>

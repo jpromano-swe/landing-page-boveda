@@ -11,7 +11,7 @@ export type FaqItem = {
 };
 
 export default function FaqAccordion({ items }: { items: FaqItem[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="space-y-4">
